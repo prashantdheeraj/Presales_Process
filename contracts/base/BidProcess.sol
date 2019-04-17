@@ -7,11 +7,10 @@ import "../accesscontrol/SolutionArchitectRole.sol";
 
 
 contract BidProcess is 
-BidManagerRole(),
-DeliveryLeadRole(),
-SalesLeadRole(),
-SolutionArchitectRole() 
-
+BidManagerRole,
+DeliveryLeadRole,
+SalesLeadRole,
+SolutionArchitectRole 
 {
 
 	 //variable: 'Owner'
@@ -21,7 +20,7 @@ SolutionArchitectRole()
     uint256 public proposalId;
 
 	//various state in which a proposal can be
-    enum proposalState {Initiated, Created, Populated, Reviewed, Revision, Rejected, Approved, Packed, Submitted}
+    enum  proposalState  {Initiated, Created, Populated, Reviewed, Revision, Rejected, Approved, Packed, Submitted}
 						//0			1		 2			3			4		5		 6		  7			8
 
 
@@ -37,7 +36,7 @@ SolutionArchitectRole()
     }
 
     // Define mapping 'proposals' that maps the proposalid (a number) to a proposal.
-    mapping (uint => Proposal) proposals;
+    mapping (uint => Proposal)  public proposals;
 
     	
 	//EVENTS
@@ -84,6 +83,12 @@ SolutionArchitectRole()
 		_;
 	}
 
+	modifier isReviewedorRevised (uint id) {
+		bool result = (proposals[id].state == proposalState.Reviewed) || (proposals[id].state == proposalState.Revision) ;
+		require(result, "Proposal is not Reviewed or Revised yet");
+		_;
+	}
+
 	modifier isApproved (uint id) {
 		require(proposals[id].state == proposalState.Approved, "Proposal is not Approved yet");
 		_;
@@ -118,7 +123,7 @@ SolutionArchitectRole()
 	
 
 	// Sales Lead Initiates 
-	function initiateBidRequest(string memory name, uint totalContractValue) public onlySalesLead {
+	function initiateBidRequest(string memory name, uint totalContractValue) public onlySalesLead returns (uint) {
 		proposalId = proposalId + 1; 					 // Create a new proposal id. GP is to use safemath
 		proposals[proposalId].proposalId = proposalId ;	 // set the proposal id for the new proposal
 		proposals[proposalId].name = name ;		//Set the name
@@ -126,6 +131,7 @@ SolutionArchitectRole()
 		proposals[proposalId].state =  proposalState.Initiated;				// O is the initiated state
         proposals[proposalId].currentOwner = msg.sender ;
 		emit BidInitiated(proposalId) ;
+		return proposalId;
 	}
 
 	// Bid manager creates a bid request and proposal content
@@ -158,7 +164,8 @@ SolutionArchitectRole()
 	}
 
 	//Delivery Lead provides the approval
-	function provideApproval(uint  id) public onlyDeliveryLead isReviewed(id){
+	function provideApproval(uint  id) public onlyDeliveryLead //isReviewedorRevised(id)
+	{
 		proposals[id].previousOwner = proposals[id].currentOwner ;//make current owner (Bid Manager) the previous owner
 		proposals[id].currentOwner = msg.sender ;		// make the sender the proposal owner
 		proposals[id].state =  proposalState.Approved;				// O is the initiated state
@@ -197,6 +204,15 @@ SolutionArchitectRole()
 		proposals[id].currentOwner = msg.sender ;		// make the sender the proposal owner
 		proposals[id].state =  proposalState.Packed;		   // Change the status as populated to follow the workflow
 		emit BidSubmitted(id) ;
+	}
+
+
+
+	/// UTILITY FUNCTIONS
+
+	function fetchProposalState(uint  id) public view returns (proposalState state){
+		state = proposals[id].state;
+		return state;
 	}
 
 }

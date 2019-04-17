@@ -27,7 +27,7 @@ contract SalesLeadRole {
 
   // Define a modifier that checks to see if msg.sender has the appropriate role
   modifier onlySalesLead() {
-    require(isSalesLead(msg.sender));
+    require(isSalesLead(msg.sender),"Only Sales Lead is alllowed to perform this function");
     _;
   }
 

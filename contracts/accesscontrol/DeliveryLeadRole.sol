@@ -22,7 +22,7 @@ contract DeliveryLeadRole {
 
   // Define a modifier that checks to see if msg.sender has the appropriate role
   modifier onlyDeliveryLead() {
-    require(isDeliveryLead(msg.sender));
+    require(isDeliveryLead(msg.sender),"Only Delivery Lead is alllowed to perform this function");
     _;
   }
 

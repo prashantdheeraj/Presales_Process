@@ -22,7 +22,7 @@ contract SolutionArchitectRole {
 
   // Define a modifier that checks to see if msg.sender has the appropriate role
   modifier onlySolutionArchitect() {
-    require(isSolutionArchitect(msg.sender));
+    require(isSolutionArchitect(msg.sender),"Only Solution Architect is alllowed to perform this function");
     _;
   }
 

@@ -22,7 +22,7 @@ contract BidManagerRole {
 
   // Define a modifier that checks to see if msg.sender has the appropriate role
   modifier onlyBidManager() {
-    require(isBidManager(msg.sender));
+    require(isBidManager(msg.sender), "Only Bid Manager is alllowed to perform this function");
     _;
   }
 
