@@ -1,6 +1,7 @@
 var HDWalletProvider = require("truffle-hdwallet-provider");
 var mnemonic = "bone more want coil chase green gorilla water body capital guilt virus";
 
+
 module.exports = {
   networks: {
     // development: {
@@ -17,6 +18,16 @@ module.exports = {
       gas: 6500000
     }
   },
+
+  rinkeby: {
+    provider: () => new HDWalletProvider(mnemonic, `rinkeby.infura.io/v3/2cfe80b9874e44118e7aa2b7a7cc3b96`),
+    from: '0xE8318Da70e75fce4E9Bf8578c3D7cF82092972fD',
+    network_id: 4,
+    gas: 4500000,
+    gasPrice: 10000000000,
+   
+  },
+
   compilers: {
     solc: {
       version: "^0.5.0"

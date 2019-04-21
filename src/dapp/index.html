@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BidProcess</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Bid Process Management DAPP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <main class="container">
+        <div id="display-wrapper" class="top-20">
+        </div>
+    </main>
+    <main class="container">
+         <div  class='flexbox'>
+            <div class='user-menu'>
+                <h3> Role Assignment</h3>
+                <div class="action last">
+                    <label class="form">Select the Role for authorization
+                        <select id="select-role">
+                          <option value="0">Select Role:</option>
+                          <option value="1">Sales Lead</option>
+                          <option value="2">Bid Manager</option>
+                          <option value="3">Solution Architect</option>
+                          <option value="4">Delivery Lead</option>
+                        </select>
+                    </label>    
+                </div>
+                <div class="action last">
+                    <label class="form">Address of the role
+                    <input type="text" id="auth-user">                   
+                  </label>
+                  <btn class="btn btn-primary " id="assign-role">Assign Role</btn>
+                </div>
+            </div>
+          </div>
+    </main>
+
+    <main class="container">
+      <div  class='flexbox'>
+         <div class='user-menu'>
+             <h3> Role Validation</h3>
+             <div class="action last">
+                 <label class="form">Select the Role to validate
+                     <select id="select-role-validation">
+                       <option value="0">Select Role:</option>
+                       <option value="1">Sales Lead</option>
+                       <option value="2">Bid Manager</option>
+                       <option value="3">Solution Architect</option>
+                       <option value="4">Delivery Lead</option>
+                     </select>
+                 </label>    
+             </div>
+             <div class="action last">
+                 <label class="form">Address of the role
+                 <input type="text" id="addr-user">                   
+               </label>
+               <btn class="btn btn-primary " id="check-role">check Access to Role</btn>
+             </div>
+         </div>
+       </div>
+     </main>
+
+     <main class="container">
+        <div  class='flexbox'>
+           <div class='user-menu'>
+               <h3> Role Renunciation</h3>
+               <div class="action last">
+                   <label class="form">Select the Role to Renounce
+                       <select id="select-role-renunciation">
+                         <option value="0">Select Role:</option>
+                         <option value="1">Sales Lead</option>
+                         <option value="2">Bid Manager</option>
+                         <option value="3">Solution Architect</option>
+                         <option value="4">Delivery Lead</option>
+                       </select>
+                   </label>    
+               </div>
+               <div class="action last">
+                   <label class="form">Address of the role
+                   <input type="text" id="addr-renc-user">                   
+                 </label>
+                 <btn class="btn btn-primary " id="renounce-role">Renounce Access to Role</btn>
+               </div>
+           </div>
+         </div>
+       </main>
+
+
+       <main class="container">
+        <div  class='flexbox'>
+           <div class='user-menu'>
+               <h3> Bid Process Functions</h3>
+               <div class="action last">
+                <label class="form">Select the Role to Renounce
+                    <select id="select-role-function">
+                      <option value="0">Select Role:</option>
+                      <option value="1">Sales Lead</option>
+                      <option value="2">Bid Manager</option>
+                      <option value="3">Solution Architect</option>
+                      <option value="4">Delivery Lead</option>
+                    </select>
+                </label>    
+              </div>
+               <div class="action last">
+                   <label class="form">Perform Function
+                       <select id="select-bid-function">
+                         <option value="0">Select a function to perform:</option>
+                         <option value="1">Initiate Bid Request</option>
+                         <option value="2">Create Bid</option>
+                         <option value="3">Populate Bid</option>
+                         <option value="4">Review Bid</option>
+                         <option value="5">Reject Bid</option>
+                         <option value="6">Revise Bid</option>
+                         <option value="7">Approve Bid</option>
+                         <option value="8">Pacakage Bid</option>
+                         <option value="9">Submit Bid</option>
+                       </select>
+                   </label>    
+               </div>
+        
+               <div class="action last">
+                   <label class="form">Address of the actor
+                    <input type="text" id="addr-bid-function">                   
+                    </label>
+                    <label class="form">Bid ID
+                        <input type="text" id="bid-id">                   
+                    </label>
+                    <label class="form">Content
+                        <input type="text" id="bid-content">                   
+                    </label>
+                 <btn class="btn btn-primary " id="perform-function">Submit</btn>
+               </div>
+           </div>
+         </div>
+       </main>  
+
+       <main class="container">
+            <div  class='flexbox'>
+               <div class='user-menu'>
+                   <h3> Fetch status</h3>
+                   
+                   <div class="action last">
+                      <label class="form">Bid ID
+                            <input type="text" id="bid-id-status">                   
+                        </label>
+                     <btn class="btn btn-primary " id="fetch-status">Fetch status</btn>
+                   </div>
+               </div>
+             </div>
+           </main>  
+    
+
+</body>
+
+</html>

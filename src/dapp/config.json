@@ -1,0 +1,10 @@
+{
+	"localhost": {
+		"url": "http://localhost:7545",
+		"contractAddress": "0x15ba600d65bf37194A1fA31DD941737581564023"
+	},
+	"rinkeby": {
+		"url": "http://rinkeby.infura.io/v3/2cfe80b9874e44118e7aa2b7a7cc3b96",
+		"contractAddress": "0x15ba600d65bf37194A1fA31DD941737581564023"
+	}
+}
