@@ -8,7 +8,7 @@ import Web3 from 'web3';
 (async () => {
   let result = null
 
-  let contract = new Contract('rinkeby', () => {
+  let contract = new Contract('localhost', () => {
        
 
         //Contract owner provides access to the Role (addRole)

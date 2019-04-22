@@ -1,9 +1,9 @@
 const BidProcess = artifacts.require('./BidProcess.sol')
-const Ownable = artifacts.require('./Ownable.sol')
+//const Ownable = artifacts.require('./Ownable.sol')
 const fs = require('fs');
 
-module.exports = function (deployer) {
-  deployer.deploy(BidProcess)
+module.exports =  function (deployer, network, accounts) {
+  deployer.deploy(BidProcess,{from: accounts[0]})
     .then(() => {
         let config = {
                         localhost: {
