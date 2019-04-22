@@ -1,7 +1,7 @@
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require("web3");
-var mnemonic = "bone more want coil chase green gorilla water body capital guilt virus";
-var mnemonicRinkeby = "together almost between task fold ask repeat tissue better foam table melody";
+var mnemonic = "";
+var mnemonicRinkeby = "";
 
 module.exports = {
   networks: {
@@ -14,7 +14,7 @@ module.exports = {
     },
 
     rinkeby: {
-      provider:  () => new HDWalletProvider(mnemonicRinkeby, `https://rinkeby.infura.io/v3/2cfe80b9874e44118e7aa2b7a7cc3b96`),
+      provider:  () => new HDWalletProvider(mnemonicRinkeby, `https://rinkeby.infura.io/v3/`),
       //from: '0x1213eA0da8B016978E37Bf93CECF66eA2f155A74',
       network_id: 4,
       gas: 4500000,
